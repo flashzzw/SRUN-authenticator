@@ -7,6 +7,9 @@ import hashlib
 import math
 import logging
 import os
+import warnings
+from urllib3.exceptions import InsecureRequestWarning
+warnings.simplefilter('ignore', InsecureRequestWarning)
 
 username = ''
 password = ''
@@ -139,7 +142,7 @@ def get_token(session, ip):
 
 def is_connected():
     try:
-        requests.get("https://www.bilibili.com/", timeout=2, headers=headers)
+        requests.get("https://test.ustc.edu.cn/", timeout=2, headers=headers)
         return True
     except requests.RequestException:
         return False
